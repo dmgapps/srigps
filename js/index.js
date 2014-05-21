@@ -34,7 +34,7 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-        setTimeout(startCoords, 5000);
+        
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
