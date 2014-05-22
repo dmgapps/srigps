@@ -58,8 +58,10 @@ var app = {
 
         var lat = position.coords.latitude;
         var lon = position.coords.longitude;
-        var html = "Lat = " + lat + " Lon = " + lon;
+        var html = "Latitude = " + lat + "<br />" +  " Longitude = " + lon;
         document.getElementById('coords').innerHTML = html;
+
+        console.log(html);
 
         //update db
         $.ajax({
