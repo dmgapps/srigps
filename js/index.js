@@ -34,6 +34,7 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
+        startCoords();
         
     },
     // Update DOM on a Received Event
@@ -46,44 +47,5 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
-    },
-    startCoords: function() {
-
-        navigator.geolocation.getCurrentPosition(onSuccess, onError);
-        
-
-    },
-
-    onSuccess: function(position) {
-
-        var lat = position.coords.latitude;
-        var lon = position.coords.longitude;
-        var html = "Latitude = " + lat + "<br />" +  " Longitude = " + lon;
-        document.getElementById('coords').innerHTML = html;
-
-        console.log(html);
-
-        //update db
-        $.ajax({
-
-            type: "GET",
-            data: "lat=" + lat + "&lon=" + lon,
-            url:  "http://dmgdemos.com/srigps/updateCoords.php"
-        }).done(function(data) {
-
-          console.log('update');
-
-
-        });
-
-
-
-    },
-
-    onError: function(error) {
-
-        alert('code: '    + error.code    + '\n' +
-              'message: ' + error.message + '\n');
-
     }
 };
