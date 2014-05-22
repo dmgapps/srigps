@@ -1,12 +1,13 @@
+
 function startCoords() {
 
-    console.log('startCoords called');
     navigator.geolocation.getCurrentPosition(onSuccess, onError);
 
 }
 
 var onSuccess = function(position) {
 
+    console.log('success');
    var lat = position.coords.latitude;
    var lon = position.coords.longitude;
    //update db
@@ -17,7 +18,7 @@ var onSuccess = function(position) {
        url:  "http://dmgdemos.com/srigps/updateCoords.php"
    }).done(function(data) {
 
-     //console.log('updated');
+     console.log('updated');
      startCoords();
 
 
